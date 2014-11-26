@@ -1,23 +1,49 @@
 html
 {
-	background: 
+	background: url("image/mapwesnoth.jpeg");
+	width: 50%;
+	min-height: 50%;
 }
 
 .header
 {
+	display: block;
+	background-color: rgba(0, 0, 0, 0.50);
+	width: 50%;
+	height: 20%;
+	color: white;
 	
+	position: absolute;
+	top: 0;
+	left: 25%;
 }
 
 .unit_to_compare
 {
-	
+	display: block;
+	background-color:  rgba(0, 0, 0, 0.5);
+	width: 40%;
+	height: 70%;
+	position: absolute;
+	top: 30%;
+	left: 5%;
 }
 
 .unit_of_reference
 {
+	display: block;
+	background-color: rgba(0, 0, 0, 0.5);
+	width: 40%;
+	height: 70%;
+	position: absolute;
+	top: 30%;
+	left: 55%;
 }
 
 .footer
 {
+	display: bloc;
+	opacity: 50%;
+	text-align: center;
 }
 

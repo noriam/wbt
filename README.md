@@ -1,0 +1,4 @@
+wbt
+===
+
+WesnothBalancingTool

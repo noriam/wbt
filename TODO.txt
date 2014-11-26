@@ -1,0 +1,38 @@
+TODO LIST :
+
+1. Display on screen a window for our program.
+The window is split in two parts :
+    - The Unit on the LEFT side
+    - The Unit on the RIGHT side
+Over those two parts, there are two menus :
+    - Select a Unit from the game
+    - Select your home-made Unit
+The program compare the two Units when both are selected,
+or only print the power score of it if there is only one.
+At the bottom of the window, there must be the synthesis of the comparison.
+
+2. Parse the .cfg selected in the menu, and get the needed informations from them :
+For the calcul :
+    - Hitpoints
+    - Movement Points
+    - Gold Cost
+    - Experience
+    - Level
+    - Special(s) Power(s)
+    - Attacks :
+      - Damages
+      - Number of Hit(s)
+      - Type
+      - Special(s)
+    - Defenses
+    - Resistances
+For the display :
+    - Name of the Unit
+    - Image of the Unit
+    - For the Attacks part :
+      - Name of the Attacks
+      - Image of the Attacks
+    If there is no images, a default "unknown" image must be loaded.
+For most of the default displays, the sprites of the game should be taken.
+
+3. Calcul of the power score for each Unit based on the informations above.

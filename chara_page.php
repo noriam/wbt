@@ -21,41 +21,72 @@ if ($contents == false) {
 }
 
 //Name
-preg_match_all("/name= _ \"(.+)\"/", $contents, $result);
-$name = $result[1][0];
+if (preg_match_all("/name= _ \"(.+)\"/", $contents, $result) != false)
+    $name = $result[1][0];
+else
+    $name = "Unknow";
 //Image
-preg_match_all("/\[unit_type\].*image=\"([^\"]*)\".*profile/s", $contents, $result);
-$image = $result[1][0];
+if (preg_match_all("/\[unit_type\].*image=\"([^\"]*)\".*profile/s", $contents, $result) != false)
+    $image = $result[1][0];
+else
+    $image = "path to basic image";
 //Hp
-preg_match_all("/hitpoints=(\d+)/", $contents, $result);
-$hp = $result[1][0];
+if (preg_match_all("/hitpoints=(\d+)/", $contents, $result) != false)
+    $hp = $result[1][0];
+else
+    $hp = "Unknow";
 //Move
-preg_match_all("/movement=(\d+)/", $contents, $result);
-$move = $result[1][0];
+if (preg_match_all("/movement=(\d+)/", $contents, $result) != false)
+    $move = $result[1][0];
+else
+    $move = "Unknow";
 //Cost
-preg_match_all("/cost=(\d+)/", $contents, $result);
-$cost = $result[1][0];
+if (preg_match_all("/cost=(\d+)/", $contents, $result) != false)
+    $cost = $result[1][0];
+else
+    $cost = "Unknow";
 //Experience
-preg_match_all("/experience=(\d+)/", $contents, $result);
-$xp = $result[1][0];
+if (preg_match_all("/experience=(\d+)/", $contents, $result) != false)
+    $xp = $result[1][0];
+else
+    $xp = "Unknow";
 //Level
-preg_match_all("/level=(\d+)/", $contents, $result);
-$level = $result[1][0];
-//Damage
-preg_match_all("/damage=(\d+)/", $contents, $result);
-$dmg = $result[1][0];
-//Number
-preg_match_all("/number=(\d+)/", $contents, $result);
-$nbr = $result[1][0];
-//Type
-preg_match_all("/type=(\w+)/", $contents, $result);
-$type = $result[1][0];
-//Special
-preg_match_all("/{(WEAPON[A-Z_]*)}/", $contents, $result);
-$special = $result[1][0];
-//Range
-preg_match_all("/range=(\w+)/", $contents, $result);
-$range = $result[1][0];
+if (preg_match_all("/level=(\d+)/", $contents, $result) != false)
+    $level = $result[1][0];
+else
+    $level = "Unknow";
+//Attack
+if (preg_match_all("/\[attack\](.*)\[\/attack\]/s", $contents, $result) != false)
+    {
+    $attack = $result[1][0];
+    //Damage
+    if (preg_match_all("/damage=(\d+)/", $attack, $result) != false)
+        $dmg = $result[1][0];
+    else
+        $dmg = "Unknow";
+    //Number
+    if (preg_match_all("/number=(\d+)/", $attack, $result) != false)
+        $nbr = $result[1][0];
+    else
+        $nbr = "Unknow";
+    //Type
+    if (preg_match_all("/type=(\w+)/", $attack, $result) != false)
+        $type = $result[1][0];
+    else
+        $type = "Unknow";
+    //Special
+    if (preg_match_all("/{(WEAPON[A-Z_]*)}/", $attack, $result) != false)
+        $special = $result[1][0];
+    else
+        $special = "Unknow";
+    //Range
+    if (preg_match_all("/range=(\w+)/", $attack, $result) != false)
+        $range = $result[1][0];
+    else
+        $range = "Unknow";
+    }
+else
+    $attack = $dmg = $nbr = $type = $special = $range = "Unknow";
 ?>
 
 <div class="unit_to_compare">

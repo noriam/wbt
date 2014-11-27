@@ -16,12 +16,12 @@
 </head>
 <body>
 <?php
-$handle = fopen($argv[1], "r");
+$handle = fopen("Upload/Bat.cfg", "r");
 if ($handle == false) {
     print "Error: open fail";
     exit(1);
 }
-$contents = fread($handle, filesize($argv[1]));
+$contents = fread($handle, filesize("Upload/Bat.cfg"));
 if ($contents == false) {
     print "Error: read fail";
     exit(1);
@@ -45,6 +45,9 @@ $chara->set_hp($result[1][0]);
 preg_match_all("/movement=(\d+)/", $contents, $result);
 $chara->set_mp($result[1][0]);
 
+//Move type
+preg_match_all("/movement_type=(\w+)/", $contents, $result);
+$chara->set_moveType($result[1][0]);
 //Cost
 preg_match_all("/cost=(\d+)/", $contents, $result);
 $chara->set_cost($result[1][0]);
@@ -95,6 +98,7 @@ print "name : " . $chara->get_name() . "<br>";
 print "image : " . $chara->get_image() . "<br>";
 print "hp : " . $chara->get_hp() . "<br>";
 print "movement : " . $chara->get_mp() . "<br>";
+print "movement type : " . $chara->get_moveType() . "<br>";
 print "cost : " . $chara->get_cost() . "<br>";
 print "experience : " . $chara->get_xp() . "<br>";
 print "level : " . $chara->get_level() . "<br>";
@@ -113,6 +117,34 @@ foreach ($attack as $atk)
   {
     echo "damage : " . $atk->get_dmg() . "<br>";
   }
+
+echo "<br>";
+
+foreach ($attack as $atk)
+{
+    echo "number : " . $atk->get_nbr() . "<br>";
+}
+
+echo "<br>";
+
+foreach ($attack as $atk)
+{
+    echo "type : " . $atk->get_type() . "<br>";
+}
+
+echo "<br>";
+
+foreach ($attack as $atk)
+{
+    echo "special : " . $atk->get_special() . "<br>";
+}
+
+echo "<br>";
+
+foreach ($attack as $atk)
+{
+    echo "range : " . $atk->get_range() . "<br>";
+}
 
 echo my_calc($chara);
 ?>

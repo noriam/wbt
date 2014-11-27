@@ -4,7 +4,7 @@
 <?php
 $uploadOk = 1;
 if (isset($_POST["submit"])) {
-  $target_dir = "upload/";
+  $target_dir = "./Upload/";
   $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
   $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
   // Check if file is a .cfg
@@ -22,6 +22,13 @@ if ($uploadOk != 0) {
   <input type="submit" value="Upload .cfg file" name="submit">
 </form>
 <?php }
+ else {
+   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)
+       == false) {
+     echo "Sorry, there was an error uploading your file.<br>";
+     $uploadOk = 1;
+   }
+ }
 ?>
 </body>
 </html>

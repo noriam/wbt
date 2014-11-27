@@ -67,36 +67,23 @@ for ($i = 0; $i < preg_match_all("/damage=(\d+)/", $contents_attack, $result); $
 {
     $attack[$i] = new attack();
     //Name
-    if (preg_match_all("/name=(\w+)/", $contents_attack, $result) != false)
-        $attack[$i]->set_name($result[1][0]);
-    else
-        $attack[$i]->set_name(null);
+    preg_match_all("/name=(\w+)/", $contents_attack, $result);
+    $attack[$i]->set_name($result[1][$i]);
     //Damage
-    if (preg_match_all("/damage=(\d+)/", $contents_attack, $result) != false)
-        $attack[$i]->set_dmg($result[1][0]);
-    else
-        $attack[$i]->set_dmg(null);
+    preg_match_all("/damage=(\d+)/", $contents_attack, $result);
+    $attack[$i]->set_dmg($result[1][$i]);
     //Number
-    if (preg_match_all("/number=(\d+)/", $contents_attack, $result) != false)
-        $attack[$i]->set_nbr($result[1][0]);
-    else
-        $attack[$i]->set_nbr(null);
+    preg_match_all("/number=(\d+)/", $contents_attack, $result);
+    $attack[$i]->set_nbr($result[1][$i]);
     //Type
-    if (preg_match_all("/type=(\w+)/", $contents_attack, $result) != false)
-        $attack[$i]->set_type($result[1][0]);
-    else
-        $attack[$i]->set_type(null);
+    preg_match_all("/type=(\w+)/", $contents_attack, $result);
+    $attack[$i]->set_type($result[1][$i]);
     //Special
-    if (preg_match_all("/{(WEAPON[A-Z_]*)}/", $contents_attack, $result) != false)
-        $attack[$i]->set_special($result[1][0]);
-    else
-        $attack[$i]->set_special(null);
+    preg_match_all("/{(WEAPON[A-Z_]*)}/", $contents_attack, $result);
+    $attack[$i]->set_special($result[1][$i]);
     //Range
-    if (preg_match_all("/range=(\w+)/", $contents_attack, $result) != false)
-        $attack[$i]->set_range($result[1][0]);
-    else
-        $attack[$i]->set_range(null);
-    $class_vars = get_class_vars(get_class($attack[$i]));
+    preg_match_all("/range=(\w+)/", $contents_attack, $result);
+    $attack[$i]->set_range($result[1][$i]);
 }
 print "name : " . $name . "<br>";
 print "image : " . $image . "<br>";
@@ -105,15 +92,21 @@ print "movement : " . $move . "<br>";
 print "cost : " . $cost . "<br>";
 print "experience : " . $xp . "<br>";
 print "level : " . $level . "<br>";
+
+echo "<br>";
+
 foreach ($attack as $atk)
 {
-    echo "damage : " . $atk->get_dmg() . " ";
+    echo "name : " . $atk->get_name() . "<br>";
 }
+
 echo "<br>";
-foreach ($attack as $name)
+
+foreach ($attack as $atk)
 {
-    echo "name : " . $atk->get_name() . " ";
+    echo "damage : " . $atk->get_dmg() . "<br>";
 }
+
 ?>
 </body>
 </html>

@@ -1,6 +1,6 @@
 html
 {
-	background: url("image/mapwesnoth.jpeg") no-repeat center fixed;
+	background: url("images/mapwesnoth.jpeg") no-repeat center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -27,6 +27,8 @@ html
 .unit_to_compare
 {
 	display: block;
+    background-color: rgba(0, 0, 0, 0.50);
+    color: white;
 	background: url("image/carte.jpeg") no-repeat center;
 	background-size: contain;
 	width: 29%;
@@ -43,7 +45,7 @@ html
 .unit_of_reference
 {
 	display: block;
-	background: url("image/carte.jpeg") no-repeat center;
+	background: url("images/carte.jpeg") no-repeat center;
 	background-size: contain;
 	width: 29%;
 	height: 84%;

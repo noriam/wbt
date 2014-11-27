@@ -11,6 +11,7 @@
     <?php
     require_once('class.attack.php');
     require_once('class.chara.php');
+    require_once('calc.php');
     ?>
 </head>
 <body>
@@ -60,7 +61,7 @@ preg_match_all("/level=(\d+)/", $contents, $result);
 $chara->set_level($result[1][0]);
 
 //Attack
-$ct = preg_match_all("/\[attack\]([^\[\]]*)\[\/attack\]/s", $contents, $result);
+$ct = preg_match_all("/\[attack\]((?:(?!\[\/attack\]).)+)\[\/attack\]/s", $contents, $result);
 $contents_attack = $result[1];
 for ($i = 0; $i < $ct; ++$i) {
     $attack = new attack();
@@ -137,6 +138,8 @@ echo "<br>";
 foreach ($attack as $atk) {
     echo "range : " . $atk->get_range() . "<br>";
 }
+
+echo my_calc($chara);
 ?>
 </body>
 </html>

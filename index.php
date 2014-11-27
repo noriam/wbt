@@ -6,10 +6,14 @@
     </div>
 </head>
 <body>
-<div class="unit_to_compare">
+<div class="main">
+<?php include("form.php"); ?>
+<div class="unit_to_compare1">
     <?php include("chara_page.php"); ?>
 </div>
-<div class="unit_of_reference">
+<div class="unit_to_compare2">
+    <?php include("chara_page.php"); ?>
+</div>
 </div>
 <div class="footer">
 </div>

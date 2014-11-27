@@ -92,9 +92,9 @@ for ($i = 0; $i < $ct; ++$i) {
 
     $chara->add_attack($attack);
 }
+print "<img src='images/" . $chara->get_image() . "'><br>";
 print "name : " . $chara->get_name() . "<br>";
 print "image : " . $chara->get_image() . "<br>";
-print "<img src='images/" . $chara->get_image() . "'><br>";
 print "hp : " . $chara->get_hp() . "<br>";
 print "movement : " . $chara->get_mp() . "<br>";
 print "movement type : " . $chara->get_moveType() . "<br>";

@@ -1,11 +1,14 @@
+@font-face {
+    font-family: Planewalker;
+    src: url(Font/Planewalker.otf);
+}
+
 html
 {
-	background: url("images/mapwesnoth.jpeg") no-repeat center fixed;
+	background: url("Images/mapwesnoth.jpeg") no-repeat center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
-	width: 100%;
-	height: 100%;
 }
 
 .header
@@ -26,33 +29,32 @@ html
 
 .main
 {
+    font-family: Planewalker;
     display: flex;
     justify-content: center;
-    width: 80%;
+    width: 1000px;
     margin: auto;
     margin-top: 200px;
 }
 
 .unit_to_compare1
 {
+    width: 400px;
+    height: 560px;
 	display: inline-block;
-    min-width: 400px;
-    color: white;
-    text-shadow: 1px 1px black;
-	background: url("image/carte.jpeg") no-repeat;
-	background-size: contain;
+	background: url("Images/carte2.jpeg") no-repeat;
+    background-size: 100%;
 
 }
 
 .unit_to_compare2
 {
+    width: 400px;
+    height: 560px;
     margin-left: 20%;
     display: inline-block;
-    min-width: 400px;
-    color: white;
-    text-shadow: 1px 1px black;
-    background: url("image/carte.jpeg") no-repeat;
-    background-size: contain;
+    background: url("Images/carte2.jpeg") no-repeat;
+    background-size: 100%;
 }
 
 img
@@ -65,11 +67,66 @@ img
 
 .name_monster
 {
-    color: red;
+    color: black;
+    font-size: 25px;
+    position: relative;
+    top: -195px;
+    left: 40px;
+}
+
+.race_monster
+{
+    color: black;
+    font-size: 25px;
+    position: relative;
+    top: 60px;
+    left: 40px;
+}
+
+.description_monster
+{
+    color: black;
     font-size: 20px;
     position: relative;
-    top: -170px;
+    top: 80px;
     left: 40px;
+}
+
+
+.atk_icon
+{
+    background: url("Images/sword.png");
+    width: 60px;
+    height: 60px;
+    position: relative;
+    left: 300px;
+    top: -25px;
+    cursor: pointer;
+}
+
+.atk_icon:hover .attack_monster
+{
+    display: block;
+}
+
+.attack_monster
+{
+    display: none;
+    background-color: white;
+    color: black;
+    font-size: 16px;
+    position: absolute;
+    top: -400px;
+    left: 100px;
+}
+
+.elo_monster
+{
+    color: black;
+    font-size: 40px;
+    position: relative;
+    top: 120px;
+    left: 80px;
 }
 
 .footer

@@ -26,87 +26,92 @@ if ($contents == false) {
     exit(1);
 }
 
+$chara = new chara();
+
 //Name
-if (preg_match_all("/name= _ \"(.+)\"/", $contents, $result) != false)
-    $name = $result[1][0];
-else
-    $name = "None";
+preg_match_all("/name= _ \"(.+)\"/", $contents, $result);
+$chara->set_name($result[1][0]);
+
 //Image
-if (preg_match_all("/\[unit_type\].*image=\"([^\"]*)\".*profile/s", $contents, $result) != false)
-    $image = $result[1][0];
-else
-    $image = "path to basic image";
+preg_match_all("/\[unit_type\].*image=\"([^\"]*)\".*profile/s", $contents, $result);
+$chara->set_image($result[1][0]);
+
 //Hp
-if (preg_match_all("/hitpoints=(\d+)/", $contents, $result) != false)
-    $hp = $result[1][0];
-else
-    $hp = "None";
+preg_match_all("/hitpoints=(\d+)/", $contents, $result);
+$chara->set_hp($result[1][0]);
+
 //Move
-if (preg_match_all("/movement=(\d+)/", $contents, $result) != false)
-    $move = $result[1][0];
-else
-    $move = "None";
+preg_match_all("/movement=(\d+)/", $contents, $result);
+$chara->set_mp($result[1][0]);
+
 //Cost
-if (preg_match_all("/cost=(\d+)/", $contents, $result) != false)
-    $cost = $result[1][0];
-else
-    $cost = "None";
+preg_match_all("/cost=(\d+)/", $contents, $result);
+$chara->set_cost($result[1][0]);
+
 //Experience
-if (preg_match_all("/experience=(\d+)/", $contents, $result) != false)
-    $xp = $result[1][0];
-else
-    $xp = "None";
+preg_match_all("/experience=(\d+)/", $contents, $result);
+$chara->set_xp($result[1][0]);
+
 //Level
-if (preg_match_all("/level=(\d+)/", $contents, $result) != false)
-    $level = $result[1][0];
-else
-    $level = "None";
+preg_match_all("/level=(\d+)/", $contents, $result);
+$chara->set_level($result[1][0]);
+
 //Attack
-preg_match_all("/\[attack\](.*)\[\/attack\]/s", $contents, $result);
-$contents_attack = $result[0][0];
-for ($i = 0; $i < preg_match_all("/damage=(\d+)/", $contents_attack, $result); $i++)
-{
-    $attack[$i] = new attack();
+$ct = preg_match_all("/\[attack\]([^\[\]]*)\[\/attack\]/s", $contents, $result);
+$contents_attack = $result[1];
+for ($i = 0; $i < $ct; ++$i)
+  {
+    $attack = new attack();
+
     //Name
-    preg_match_all("/name=(\w+)/", $contents_attack, $result);
-    $attack[$i]->set_name($result[1][$i]);
+    preg_match("/name=(\w+)/", $contents_attack[$i], $result);
+    $attack->set_name($result[1]);
+
     //Damage
-    preg_match_all("/damage=(\d+)/", $contents_attack, $result);
-    $attack[$i]->set_dmg($result[1][$i]);
+    preg_match("/damage=(\d+)/", $contents_attack[$i], $result);
+    $attack->set_dmg($result[1]);
+
     //Number
-    preg_match_all("/number=(\d+)/", $contents_attack, $result);
-    $attack[$i]->set_nbr($result[1][$i]);
+    preg_match("/number=(\d+)/", $contents_attack[$i], $result);
+    $attack->set_nbr($result[1]);
+
     //Type
-    preg_match_all("/type=(\w+)/", $contents_attack, $result);
-    $attack[$i]->set_type($result[1][$i]);
+    preg_match("/type=(\w+)/", $contents_attack[$i], $result);
+    $attack->set_type($result[1]);
+
     //Special
-    preg_match_all("/{(WEAPON[A-Z_]*)}/", $contents_attack, $result);
-    $attack[$i]->set_special($result[1][$i]);
+    preg_match("/{(WEAPON[A-Z_]*)}/", $contents_attack[$i], $result);
+    $attack->set_special($result[1]);
+
     //Range
-    preg_match_all("/range=(\w+)/", $contents_attack, $result);
-    $attack[$i]->set_range($result[1][$i]);
-}
-print "name : " . $name . "<br>";
-print "image : " . $image . "<br>";
-print "hp : " . $hp . "<br>";
-print "movement : " . $move . "<br>";
-print "cost : " . $cost . "<br>";
-print "experience : " . $xp . "<br>";
-print "level : " . $level . "<br>";
+    preg_match("/range=(\w+)/", $contents_attack[$i], $result);
+    $attack->set_range($result[1]);
+
+    $chara->add_attack($attack);
+  }
+
+print "name : " . $chara->get_name() . "<br>";
+print "image : " . $chara->get_image() . "<br>";
+print "hp : " . $chara->get_hp() . "<br>";
+print "movement : " . $chara->get_mp() . "<br>";
+print "cost : " . $chara->get_cost() . "<br>";
+print "experience : " . $chara->get_xp() . "<br>";
+print "level : " . $chara->get_level() . "<br>";
 
 echo "<br>";
 
+$attack = $chara->get_attacks();
 foreach ($attack as $atk)
-{
+  {
     echo "name : " . $atk->get_name() . "<br>";
-}
+  }
 
 echo "<br>";
 
 foreach ($attack as $atk)
-{
+  {
     echo "damage : " . $atk->get_dmg() . "<br>";
-}
+  }
 
 ?>
 </body>

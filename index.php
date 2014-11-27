@@ -6,8 +6,8 @@
     </div>
 </head>
 <body>
-<div class="main">
 <?php include("form.php"); ?>
+<div class="main">
 <div class="unit_to_compare1">
     <?php include("chara_page.php"); ?>
 </div>

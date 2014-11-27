@@ -16,7 +16,7 @@ if (isset($_POST["submit"])) {
 }
 if ($uploadOk != 0) {
 ?>
-<form action="form.php" method="post" enctype="multipart/form-data">
+<form action="index.php" method="post" enctype="multipart/form-data">
   Select .cfg to upload :
   <input type="file" name="fileToUpload" id="fileToUpload" required>
   <input type="submit" value="Upload .cfg file" name="submit">

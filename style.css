@@ -26,6 +26,8 @@ html
 
 .main
 {
+    display: flex;
+    justify-content: center;
     background: rgba(0, 0, 0, 0.50);
     width: 60%;
     margin: auto;
@@ -36,36 +38,30 @@ html
 
 .unit_to_compare1
 {
-    float: left;
-	display: block;
+	display: inline-block;
     min-width: 400px;
     color: white;
     text-shadow: 1px 1px black;
 	background: url("image/carte.jpeg") no-repeat;
 	background-size: contain;
-    position: relative;
-    left: 0;
 
 }
 
 .unit_to_compare2
 {
-    float: left;
-    display: block;
+    display: inline-block;
     min-width: 400px;
     color: white;
     text-shadow: 1px 1px black;
     background: url("image/carte.jpeg") no-repeat;
     background-size: contain;
-    position: absolute;
-    right: 0;
 }
 
 img
 {
     position: relative;
-    top: 60px;
-    left: 70px;
+    top: 80px;
+    left: 90px;
     height: 200px;
 }
 

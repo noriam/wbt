@@ -62,8 +62,7 @@ $chara->set_level($result[1][0]);
 //Attack
 $ct = preg_match_all("/\[attack\]([^\[\]]*)\[\/attack\]/s", $contents, $result);
 $contents_attack = $result[1];
-for ($i = 0; $i < $ct; ++$i)
-  {
+for ($i = 0; $i < $ct; ++$i) {
     $attack = new attack();
 
     //Name
@@ -91,10 +90,10 @@ for ($i = 0; $i < $ct; ++$i)
     $attack->set_range($result[1]);
 
     $chara->add_attack($attack);
-  }
-
+}
 print "name : " . $chara->get_name() . "<br>";
 print "image : " . $chara->get_image() . "<br>";
+print "<img src='images/" . $chara->get_image() . "'><br>";
 print "hp : " . $chara->get_hp() . "<br>";
 print "movement : " . $chara->get_mp() . "<br>";
 print "movement type : " . $chara->get_moveType() . "<br>";
@@ -105,43 +104,37 @@ print "level : " . $chara->get_level() . "<br>";
 echo "<br>";
 
 $attack = $chara->get_attacks();
-foreach ($attack as $atk)
-  {
+foreach ($attack as $atk) {
     echo "name : " . $atk->get_name() . "<br>";
-  }
+}
 
 echo "<br>";
 
-foreach ($attack as $atk)
-  {
+foreach ($attack as $atk) {
     echo "damage : " . $atk->get_dmg() . "<br>";
-  }
+}
 
 echo "<br>";
 
-foreach ($attack as $atk)
-{
+foreach ($attack as $atk) {
     echo "number : " . $atk->get_nbr() . "<br>";
 }
 
 echo "<br>";
 
-foreach ($attack as $atk)
-{
+foreach ($attack as $atk) {
     echo "type : " . $atk->get_type() . "<br>";
 }
 
 echo "<br>";
 
-foreach ($attack as $atk)
-{
+foreach ($attack as $atk) {
     echo "special : " . $atk->get_special() . "<br>";
 }
 
 echo "<br>";
 
-foreach ($attack as $atk)
-{
+foreach ($attack as $atk) {
     echo "range : " . $atk->get_range() . "<br>";
 }
 ?>

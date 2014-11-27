@@ -7,6 +7,11 @@
  */
 ?>
 <html>
+<head>
+    <?php
+    require_once('class.attack.php');
+    ?>
+</head>
 <body>
 <?php
 $handle = fopen("Upload/Bat.cfg", "r");
@@ -24,7 +29,7 @@ if ($contents == false) {
 if (preg_match_all("/name= _ \"(.+)\"/", $contents, $result) != false)
     $name = $result[1][0];
 else
-    $name = "Unknow";
+    $name = "None";
 //Image
 if (preg_match_all("/\[unit_type\].*image=\"([^\"]*)\".*profile/s", $contents, $result) != false)
     $image = $result[1][0];
@@ -34,76 +39,81 @@ else
 if (preg_match_all("/hitpoints=(\d+)/", $contents, $result) != false)
     $hp = $result[1][0];
 else
-    $hp = "Unknow";
+    $hp = "None";
 //Move
 if (preg_match_all("/movement=(\d+)/", $contents, $result) != false)
     $move = $result[1][0];
 else
-    $move = "Unknow";
+    $move = "None";
 //Cost
 if (preg_match_all("/cost=(\d+)/", $contents, $result) != false)
     $cost = $result[1][0];
 else
-    $cost = "Unknow";
+    $cost = "None";
 //Experience
 if (preg_match_all("/experience=(\d+)/", $contents, $result) != false)
     $xp = $result[1][0];
 else
-    $xp = "Unknow";
+    $xp = "None";
 //Level
 if (preg_match_all("/level=(\d+)/", $contents, $result) != false)
     $level = $result[1][0];
 else
-    $level = "Unknow";
+    $level = "None";
 //Attack
-if (preg_match_all("/\[attack\](.*)\[\/attack\]/s", $contents, $result) != false)
-    {
-    $attack = $result[1][0];
+preg_match_all("/\[attack\](.*)\[\/attack\]/s", $contents, $result);
+$contents_attack = $result[0][0];
+for ($i = 0; $i < preg_match_all("/damage=(\d+)/", $contents_attack, $result); $i++)
+{
+    $attack[$i] = new attack();
+    //Name
+    if (preg_match_all("/name=(\w+)/", $contents_attack, $result) != false)
+        $attack[$i]->set_name($result[1][0]);
+    else
+        $attack[$i]->set_name(null);
     //Damage
-    if (preg_match_all("/damage=(\d+)/", $attack, $result) != false)
-        $dmg = $result[1][0];
+    if (preg_match_all("/damage=(\d+)/", $contents_attack, $result) != false)
+        $attack[$i]->set_dmg($result[1][0]);
     else
-        $dmg = "Unknow";
+        $attack[$i]->set_dmg(null);
     //Number
-    if (preg_match_all("/number=(\d+)/", $attack, $result) != false)
-        $nbr = $result[1][0];
+    if (preg_match_all("/number=(\d+)/", $contents_attack, $result) != false)
+        $attack[$i]->set_nbr($result[1][0]);
     else
-        $nbr = "Unknow";
+        $attack[$i]->set_nbr(null);
     //Type
-    if (preg_match_all("/type=(\w+)/", $attack, $result) != false)
-        $type = $result[1][0];
+    if (preg_match_all("/type=(\w+)/", $contents_attack, $result) != false)
+        $attack[$i]->set_type($result[1][0]);
     else
-        $type = "Unknow";
+        $attack[$i]->set_type(null);
     //Special
-    if (preg_match_all("/{(WEAPON[A-Z_]*)}/", $attack, $result) != false)
-        $special = $result[1][0];
+    if (preg_match_all("/{(WEAPON[A-Z_]*)}/", $contents_attack, $result) != false)
+        $attack[$i]->set_special($result[1][0]);
     else
-        $special = "Unknow";
+        $attack[$i]->set_special(null);
     //Range
-    if (preg_match_all("/range=(\w+)/", $attack, $result) != false)
-        $range = $result[1][0];
+    if (preg_match_all("/range=(\w+)/", $contents_attack, $result) != false)
+        $attack[$i]->set_range($result[1][0]);
     else
-        $range = "Unknow";
-    }
-else
-    $attack = $dmg = $nbr = $type = $special = $range = "Unknow";
+        $attack[$i]->set_range(null);
+    $class_vars = get_class_vars(get_class($attack[$i]));
+}
+print "name : " . $name . "<br>";
+print "image : " . $image . "<br>";
+print "hp : " . $hp . "<br>";
+print "movement : " . $move . "<br>";
+print "cost : " . $cost . "<br>";
+print "experience : " . $xp . "<br>";
+print "level : " . $level . "<br>";
+foreach ($attack as $atk)
+{
+    echo "damage : " . $atk->get_dmg() . " ";
+}
+echo "<br>";
+foreach ($attack as $name)
+{
+    echo "name : " . $atk->get_name() . " ";
+}
 ?>
-
-<div class="unit_to_compare">
-    <?php
-    print "name : " . $name . "<br>";
-    print "image : " . $image . "<br>";
-    print "hp : " . $hp . "<br>";
-    print "movement : " . $move . "<br>";
-    print "cost : " . $cost . "<br>";
-    print "experience : " . $xp . "<br>";
-    print "level : " . $level . "<br>";
-    print "damage : " . $dmg . "<br>";
-    print "number : " . $nbr . "<br>";
-    print "type : " . $type . "<br>";
-    print "special attack : " . $special . "<br>";
-    print "range : " . $range . "<br>";
-    ?>
-</div>
 </body>
 </html>

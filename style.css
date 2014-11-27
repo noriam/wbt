@@ -5,7 +5,7 @@ html
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	width: 100%;
-	height: 100%;	
+	height: 150%;	
 }
 
 .header
@@ -27,9 +27,12 @@ html
 .unit_to_compare
 {
 	display: block;
-	background-color:  rgba(0, 0, 0, 0.5);
+	background: url("image/carte.jpeg") no-repeat center fixed;
+	<!-- webkit-background-size: cover -->;
+	<!-- moz-background-size: cover -->;
+	<!-- o-background-size: cover -->;
 	width: 40%;
-	height: 55%;
+	height: 80%;
 	border-width: 5px;
 	border-style: ridge;
 	border-color: black;	
@@ -42,9 +45,12 @@ html
 .unit_of_reference
 {
 	display: block;
-	background-color: rgba(0, 0, 0, 0.5);
+	background: url("image/carte.jpeg") no-repeat center fixed;
+	-webkit-background-size: contain;
+	-moz-background-size: contain;
+	-o-background-size: contain;
 	width: 40%;
-	height: 55%;
+	height: 80%;
 	border-width: 5px;
 	border-style: ridge;
 	border-color: black;	
@@ -63,9 +69,9 @@ html
 	border-width: 3px;
 	border-style: ridge;
 	border-color: black;	
-	text-align: center;
-	position: absolute;
-	bottom: 0;
-	left: 0;
+	postion: absolute; 
+
+	
+	
 }
 

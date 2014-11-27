@@ -10,6 +10,7 @@
 <head>
     <?php
     require_once('class.attack.php');
+    require_once('class.chara.php');
     ?>
 </head>
 <body>

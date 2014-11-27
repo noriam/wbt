@@ -1,0 +1,73 @@
+html
+{
+	background: url("image/mapwesnoth.jpeg") no-repeat center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	width: 100%;
+	height: 150%;	
+}
+
+.header
+{
+	display: block;
+	background-color: rgba(0, 0, 0, 0.50);
+	width: 50%;
+	height: 15%;
+	border-width: 3px;
+	border-style: ridge;
+	border-color: black;	
+	color: white; 
+	text-align: center;
+	position: absolute;
+	top: 0;
+	left: 25%;
+}
+
+.unit_to_compare
+{
+	display: block;
+	background: url("image/carte.jpeg") no-repeat center;
+	background-size: contain;
+	width: 29%;
+	height: 84%;
+	border-width: 5px;
+	border-style: ridge;
+	border-color: black;	
+	text-align: left;
+	position: absolute;
+	top: 23%;
+	left: 15%;
+}
+
+.unit_of_reference
+{
+	display: block;
+	background: url("image/carte.jpeg") no-repeat center;
+	background-size: contain;
+	width: 29%;
+	height: 84%;
+	border-width: 5px;
+	border-style: ridge;
+	border-color: black;	
+	position: absolute;
+	text-align: right;
+	top: 23%;
+	left: 55%;
+}
+
+.footer
+{
+	display: bloc;
+	background-color: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 15%;
+	border-width: 3px;
+	border-style: ridge;
+	border-color: black;	
+	text-align: center;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+

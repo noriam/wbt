@@ -11,16 +11,17 @@
     <?php
     require_once('class.attack.php');
     require_once('class.chara.php');
+    require_once('calc.php');
     ?>
 </head>
 <body>
 <?php
-$handle = fopen("Upload/Bat.cfg", "r");
+$handle = fopen($argv[1], "r");
 if ($handle == false) {
     print "Error: open fail";
     exit(1);
 }
-$contents = fread($handle, filesize("Upload/Bat.cfg"));
+$contents = fread($handle, filesize($argv[1]));
 if ($contents == false) {
     print "Error: read fail";
     exit(1);
@@ -57,7 +58,7 @@ preg_match_all("/level=(\d+)/", $contents, $result);
 $chara->set_level($result[1][0]);
 
 //Attack
-$ct = preg_match_all("/\[attack\]([^\[\]]*)\[\/attack\]/s", $contents, $result);
+$ct = preg_match_all("/\[attack\]((?:(?!\[\/attack\]).)+)\[\/attack\]/s", $contents, $result);
 $contents_attack = $result[1];
 for ($i = 0; $i < $ct; ++$i)
   {
@@ -113,6 +114,7 @@ foreach ($attack as $atk)
     echo "damage : " . $atk->get_dmg() . "<br>";
   }
 
+echo my_calc($chara);
 ?>
 </body>
 </html>

@@ -12,6 +12,7 @@ class	chara
 {
   private	$_name;
   private	$_image;
+  private   $_race;
   private	$_hp;
   private	$_mp;
   private	$_cost;
@@ -46,6 +47,16 @@ class	chara
   public function	get_image()
   {
     return ($this->_image);
+  }
+
+  public function set_race($race)
+  {
+      $this->_race = $race;
+  }
+
+  public function get_race()
+  {
+      return ($this->_race);
   }
 
   public function	set_hp($hp)

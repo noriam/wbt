@@ -16,7 +16,7 @@
 </head>
 <body>
 <?php
-$handle = fopen("Upload/Bat.cfg", "r");
+$handle = fopen("Upload/" . $_FILES["fileToUpload"]["name"], "r");
 if ($handle == false) {
     print "Error: open fail";
     exit(1);
@@ -36,6 +36,10 @@ $chara->set_name($result[1][0]);
 //Image
 preg_match_all("/\[unit_type\].*image=\"([^\"]*)\".*profile/s", $contents, $result);
 $chara->set_image($result[1][0]);
+
+//Race
+preg_match_all("/race=(\w+)/", $contents, $result);
+$chara->set_race($result[1][0]);
 
 //Hp
 preg_match_all("/hitpoints=(\d+)/", $contents, $result);
@@ -92,54 +96,49 @@ for ($i = 0; $i < $ct; ++$i) {
 
     $chara->add_attack($attack);
 }
-print "<img src='images/" . $chara->get_image() . "'><br>";
-print "name : " . $chara->get_name() . "<br>";
-print "image : " . $chara->get_image() . "<br>";
-print "hp : " . $chara->get_hp() . "<br>";
-print "movement : " . $chara->get_mp() . "<br>";
-print "movement type : " . $chara->get_moveType() . "<br>";
+print "<img src='Images/" . $chara->get_image() . "'>";
+print "<div class='name_monster'>" . $chara->get_name() . "</div>";
+print "<div class='race_monster'>" . $chara->get_race() . "</div>";
+
+print "<div class='description_monster'>hp : " . $chara->get_hp() . "<br>";
+print "movement : " . $chara->get_mp() . " " . $chara->get_moveType() . "<br>";
 print "cost : " . $chara->get_cost() . "<br>";
 print "experience : " . $chara->get_xp() . "<br>";
-print "level : " . $chara->get_level() . "<br>";
+print "level : " . $chara->get_level() . "<br></div>";
 
 echo "<br>";
 
-$attack = $chara->get_attacks();
-foreach ($attack as $atk) {
-    echo "name : " . $atk->get_name() . "<br>";
-}
-
-echo "<br>";
-
-foreach ($attack as $atk) {
-    echo "damage : " . $atk->get_dmg() . "<br>";
-}
-
-echo "<br>";
-
-foreach ($attack as $atk) {
-    echo "number : " . $atk->get_nbr() . "<br>";
-}
-
-echo "<br>";
-
-foreach ($attack as $atk) {
-    echo "type : " . $atk->get_type() . "<br>";
-}
-
-echo "<br>";
-
-foreach ($attack as $atk) {
-    echo "special : " . $atk->get_special() . "<br>";
-}
-
-echo "<br>";
-
-foreach ($attack as $atk) {
-    echo "range : " . $atk->get_range() . "<br>";
-}
-
-echo my_calc($chara);
+echo "<div class='elo_monster'>Elo : " . my_calc($chara) . "</div>";
 ?>
+<div class="atk_icon">
+    <div class="attack_monster">
+<?php
+    $attack = $chara->get_attacks();
+    foreach ($attack as $atk) {
+    echo "name : " . $atk->get_name() . "<br>";
+        }
+
+        foreach ($attack as $atk) {
+        echo "damage : " . $atk->get_dmg() . "<br>";
+        }
+
+        foreach ($attack as $atk) {
+        echo "number : " . $atk->get_nbr() . "<br>";
+        }
+
+        foreach ($attack as $atk) {
+        echo "type : " . $atk->get_type() . "<br>";
+        }
+
+        foreach ($attack as $atk) {
+        echo "special : " . $atk->get_special() . "<br>";
+        }
+
+        foreach ($attack as $atk) {
+        echo "range : " . $atk->get_range() . "<br>";
+    }
+?>
+    </div>
+</div>
 </body>
 </html>

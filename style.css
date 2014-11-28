@@ -5,7 +5,7 @@
 
 html
 {
-	background: url("Images/mapwesnoth.jpeg") no-repeat center fixed;
+	background: url("images/mapwesnoth.jpeg") no-repeat center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -42,7 +42,7 @@ html
     width: 400px;
     height: 560px;
 	display: inline-block;
-	background: url("Images/carte2.jpeg") no-repeat;
+	background: url("images/carte2.jpeg") no-repeat;
     background-size: 100%;
 
 }
@@ -53,7 +53,7 @@ html
     height: 560px;
     margin-left: 20%;
     display: inline-block;
-    background: url("Images/carte2.jpeg") no-repeat;
+    background: url("images/carte2.jpeg") no-repeat;
     background-size: 100%;
 }
 
@@ -95,7 +95,7 @@ img
 
 .atk_icon
 {
-    background: url("Images/sword.png");
+    background: url("images/sword.png");
     width: 60px;
     height: 60px;
     position: relative;

@@ -101,14 +101,19 @@ img
     height: 200px;
     overflow: auto;
     -webkit-animation: move 1s infinite;
-    animation: move 1s;
+    animation: move 1s infinite;
     -webkit-animation-delay: 0s;
-    -moz-animation-delay: 0s;
-    -o-animation-delay: 0s;
     animation-delay: 0s;
 }
 
 @-webkit-keyframes move
+{
+    0% {top: 80px}
+    50% {top: 82px}
+    100% {top: 80px}
+}
+
+@keyframes move
 {
     0% {top: 80px}
     50% {top: 82px}
@@ -156,6 +161,7 @@ img
 
 .atk_icon:hover .attack_monster
 {
+    height: auto;
     color: white;
     text-shadow: 1px 1px black;
 }
@@ -163,6 +169,7 @@ img
 .attack_monster
 {
     width: 200px;
+    height: 0px;
     color: transparent;
     font-size: 16px;
     position: relative;

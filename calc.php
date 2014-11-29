@@ -21,7 +21,7 @@ function	my_calc($chara)
 	  $power_value += isset($range_i) ? $range_i : 0;
 	  $ranges[$attack->get_range()] = true;
 	  if (!isset($range_i))
-	    $range_i = 20;
+	    $range_i = 10;
 	}
       $power_value += $attack->get_dmg() * $attack->get_nbr();
       if ($attack->get_special() != null)

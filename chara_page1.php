@@ -116,27 +116,14 @@ echo "<div class='elo_monster'>Elo : " . my_calc($chara) . "</div>";
 <?php
     $attack = $chara->get_attacks();
     foreach ($attack as $atk) {
-    echo "name : " . $atk->get_name() . "<br>";
-        }
-
-        foreach ($attack as $atk) {
-        echo "damage : " . $atk->get_dmg() . "<br>";
-        }
-
-        foreach ($attack as $atk) {
-        echo "number : " . $atk->get_nbr() . "<br>";
-        }
-
-        foreach ($attack as $atk) {
-        echo "type : " . $atk->get_type() . "<br>";
-        }
-
-        foreach ($attack as $atk) {
-        echo "special : " . $atk->get_special() . "<br>";
-        }
-
-        foreach ($attack as $atk) {
-        echo "range : " . $atk->get_range() . "<br>";
+	echo "name : " . $atk->get_name() . "<br>";
+	echo "damage : " . $atk->get_dmg() . "<br>";
+	echo "number : " . $atk->get_nbr() . "<br>";
+	echo "type : " . $atk->get_type() . "<br>";
+	if ($atk->get_special() != null) {
+	   echo "special : " . $atk->get_special() . "<br>";
+    	}
+	echo "range : " . $atk->get_range() . "<br><br>";
     }
 ?>
     </div>

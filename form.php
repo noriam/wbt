@@ -12,15 +12,18 @@ if (isset($_POST['submit'])) {
     $fileType2 = pathinfo($target_file2, PATHINFO_EXTENSION);
     // Check if file is a .cfg
     if ($fileType1 != "cfg")
-        echo "Sorry, only .cfg files are allowed.<br>";
+        echo "<div class='error'>Error character 1, only .cfg files are allowed.<br></div>";
     else
         $uploadOk1 = 0;
     if ($fileType2 != "cfg")
-        echo "Sorry, only .cfg files are allowed.<br>";
+    {
+        if ($fileType2 != "")
+            echo "<div class='error'>Error character 2, only .cfg files are allowed.<br></div>";
+    }
     else
         $uploadOk2 = 0;
 }
-    ?>
+?>
 <div class="form">
     <form action="index.php" method="post" enctype="multipart/form-data">
         <input type="file" name="fileToUpload1" id="fileToUpload1" required>
@@ -29,11 +32,10 @@ if (isset($_POST['submit'])) {
         <br>
         <input type="submit" value="Upload .cfg file" name="submit">
     </form>
-    </div>
+</div>
 <?php
-if ($uploadOk1 == 0 || $uploadOk2 == 0) {
-    if (move_uploaded_file($_FILES["fileToUpload1"]["tmp_name"], $target_file1) == false)
-    {
+if ($uploadOk1 == 0) {
+    if (move_uploaded_file($_FILES["fileToUpload1"]["tmp_name"], $target_file1) == false) {
         echo "Sorry, there was an error uploading your file.<br>";
         $uploadOk1 = 1;
     } else {
@@ -41,14 +43,15 @@ if ($uploadOk1 == 0 || $uploadOk2 == 0) {
         include("chara_page1.php");
         print "</div>";
     }
-    if (move_uploaded_file($_FILES["fileToUpload2"]["tmp_name"], $target_file2) == false)
-    {
-        echo "Sorry, there was an error uploading your file.<br>";
-        $uploadOk2 = 1;
-    } else {
-        print "<div class='unit_to_compare2'>";
-        include("chara_page2.php");
-        print "</div></div>";
+    if ($uploadOk2 == 0) {
+        if (move_uploaded_file($_FILES["fileToUpload2"]["tmp_name"], $target_file2) == false) {
+            echo "Sorry, there was an error uploading your file.<br>";
+            $uploadOk2 = 1;
+        } else {
+            print "<div class='unit_to_compare2'>";
+            include("chara_page2.php");
+            print "</div></div>";
+        }
     }
 }
 ?>

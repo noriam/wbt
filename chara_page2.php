@@ -96,7 +96,11 @@ for ($i = 0; $i < $ct; ++$i) {
 
     $chara->add_attack($attack);
 }
-print "<img src='Images/" . $chara->get_image() . "'>";
+
+if (getimagesize("images/" . $chara->get_image()) != false)
+    print "<img src='images/" . $chara->get_image() . "'>";
+else
+    print "<img src='images/units/unknown-unit.png'>";
 print "<div class='name_monster'>" . $chara->get_name() . "</div>";
 print "<div class='race_monster'>" . $chara->get_race() . "</div>";
 

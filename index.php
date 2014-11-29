@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="author" content="Romain Chicoisne, Gautier Melot, Duncan Naves & Valentin Pasqué">
-    <link rel="shortcut icon" href="Images/icon.png">
+    <link rel="shortcut icon" href="images/icon.png">
     <title>WBT</title>
     <link href="style.css" rel="stylesheet">
 </head>

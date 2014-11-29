@@ -16,7 +16,7 @@
 </head>
 <body>
 <?php
-$handle = fopen("Upload/" . $_FILES["fileToUpload"]["name"], "r");
+$handle = fopen("Upload/" . $_FILES["fileToUpload1"]["name"], "r");
 if ($handle == false) {
     print "Error: open fail";
     exit(1);
@@ -87,7 +87,7 @@ for ($i = 0; $i < $ct; ++$i) {
     $attack->set_type($result[1]);
 
     //Special
-    preg_match("/{(WEAPON[A-Z_]*)}/", $contents_attack[$i], $result);
+    preg_match("/{WEAPON_SPECIAL_([A-Z_]*)}/", $contents_attack[$i], $result);
     $attack->set_special($result[1]);
 
     //Range
@@ -104,9 +104,7 @@ print "<div class='description_monster'>hp : " . $chara->get_hp() . "<br>";
 print "movement : " . $chara->get_mp() . " " . $chara->get_moveType() . "<br>";
 print "cost : " . $chara->get_cost() . "<br>";
 print "experience : " . $chara->get_xp() . "<br>";
-print "level : " . $chara->get_level() . "<br></div>";
-
-echo "<br>";
+print "level : " . $chara->get_level() . "</div>";
 
 echo "<div class='elo_monster'>Elo : " . my_calc($chara) . "</div>";
 ?>

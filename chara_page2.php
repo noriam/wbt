@@ -121,9 +121,8 @@ echo "<div class='elo_monster'>Elo : " . my_calc($chara) . "</div>";
 	echo "damage : " . $atk->get_dmg() . "<br>";
 	echo "number : " . $atk->get_nbr() . "<br>";
 	echo "type : " . $atk->get_type() . "<br>";
-	if ($atk->get_special() != null) {
+	if ($atk->get_special() != null)
 	   echo "special : " . $atk->get_special() . "<br>";
-	}
 	echo "range : " . $atk->get_range() . "<br><br>";
     }
 ?>

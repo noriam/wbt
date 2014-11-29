@@ -5,7 +5,7 @@ require_once('class.chara.php');
 function	my_calc($chara)
 {
   $power_value = $chara->get_hp()
-    + $chara->get_mp() * 5
+    + $chara->get_mp() * 3
     - ($chara->get_xp() / $chara->get_level())
     - $chara->get_cost();
   foreach ($chara->get_attacks() as $attack)
@@ -14,7 +14,7 @@ function	my_calc($chara)
 	{
 	  $power_value += isset($type_i) ? $type_i : 0;
 	  $types[$attack->get_type()] = true;
-	  $type_i = isset($type_i) ? ($type_i * 2) : 5;
+	  $type_i = isset($type_i) ? ($type_i * 2) : 2;
 	}
       if (!isset($ranges[$attack->get_range()]))
 	{
@@ -24,6 +24,8 @@ function	my_calc($chara)
 	    $range_i = 20;
 	}
       $power_value += $attack->get_dmg() * $attack->get_nbr();
+      if ($attack->get_special() != null)
+      	 $power_value += 5;
     }
   return ($power_value);
 }

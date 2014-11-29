@@ -4,9 +4,10 @@ require_once('class.chara.php');
 
 function	my_calc($chara)
 {
+  $lvl = ($chara->get_level() > 0) ? $chara->get_level() : 1;
   $power_value = $chara->get_hp()
     + $chara->get_mp() * 3
-    - ($chara->get_xp() / $chara->get_level())
+    - ($chara->get_xp() / $lvl)
     - $chara->get_cost();
   foreach ($chara->get_attacks() as $attack)
     {

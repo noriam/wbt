@@ -40,7 +40,8 @@ if ($uploadOk1 == 0) {
         $uploadOk1 = 1;
     } else {
         print "<div class='main'><div class='unit_to_compare1'>";
-        include("chara_page1.php");
+        include("open1.php");
+        include("chara_page.php");
         print "</div>";
     }
     if ($uploadOk2 == 0) {
@@ -49,7 +50,8 @@ if ($uploadOk1 == 0) {
             $uploadOk2 = 1;
         } else {
             print "<div class='unit_to_compare2'>";
-            include("chara_page2.php");
+            include("open2.php");
+            include("chara_page.php");
             print "</div></div>";
         }
     }

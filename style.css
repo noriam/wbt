@@ -10,6 +10,7 @@ html
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
+    background-size: cover;
 }
 
 input[type='file']
@@ -59,7 +60,10 @@ a
 {
     width: 1000px;
     display: flex;
+    display: -webkit-flex;
     justify-content: center;
+    -webkit-justify-content: center;
+
     margin: auto;
     margin-top: 200px;
 }
@@ -101,8 +105,12 @@ img
     height: 200px;
     overflow: auto;
     -webkit-animation: move 1s infinite;
+    -moz-animation: move 1s infinite;
+    -o-animation: move 1s infinite;
     animation: move 1s infinite;
     -webkit-animation-delay: 0s;
+    -moz-animation-delay: 0s;
+    -o-animation-delay: 0s;
     animation-delay: 0s;
 }
 
@@ -177,6 +185,8 @@ img
     left: 100px;
     overflow: auto;
     -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
     transition: all 0.2s;
 }
 
